@@ -58,14 +58,11 @@ python run.py
   <img src="files/recognize_cell.png" alt="Image 6" width="200" />
 </p>
 <p align="center">
+  <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
   <strong>Detect Cells</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>Detect row by row</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>Recognition each cell</strong>
+  <strong>&nbsp;&nbsp;&nbsp;&nbsp; Detect row by row</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Recognition each cell</strong>&nbsp;
 </p>
-
-
-
-
 
 
 
@@ -89,8 +86,10 @@ Vietnamese_OCR_Documents/
           ├── README.md                 # english version
           ├── README_vn.md              # vietnamese version
 ```
-## 🚀 Detection: PaddleOCR
+## 🚀 Overview
 
-neww
+## 🚀 Detection: Table Transformer
+
+
 ## ⚡ Recognition: VietOCR
 
