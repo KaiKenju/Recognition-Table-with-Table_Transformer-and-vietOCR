@@ -19,7 +19,6 @@ conda create -n <env_name> python=3.8
 - Activate conda
 ```[bash]
 conda activate <env_name> 
-cd Vietnamese_OCR_documents
 ```
 - Download pre-train weight
 download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link)
@@ -68,20 +67,17 @@ python run.py
 
 ## 🚀 Structure Project
 ```[bash]
-Vietnamese_OCR_Documents/
-          ├── assets/                   # contains image to OCR
-          ├── config/                   #  configuration files and options for OCR system
-          ├── cropped_images/           # Images are cropped for recognition purposes
-          ├── folder_file_api/          # file pdf,word after OCR for web-app using Fast-api
-          ├── weight/                   # The weight  of system
-          ├── PaddleOCR/                # Paddle repositories
-          ├── static/                   # front-end 
-          ├── app.py                    # demo web(local-host) using FastAPI 
+Recognition-Table-with-Table_Transformer-and-vietOCR/
+          ├── config/                   # configuration files and options for OCR system
+          ├── files/                    # file pdf,word after OCR for web-app using Fast-api
+          ├── images/                   # images to test
+          ├── output/                   # output excel file .xlsx
+          ├── weight/                   # weight file
+          ├── TATR.ipynb                # core model
           ├── Core_OCR.ipynb            # notebook paddleOCR + vietOCR
-          ├── image_processing.py       # image processing
-          ├── main.py 
-          ├── performance_thread.py     # performance optimization (faster main.py using thread)
-          ├── Pretrained_vietOCR.ipynb  # training VietOCR
+          ├── main.py                   # 
+          ├── pre_processing.py         # pre-processing
+          ├── run.py                    # how to model work well
           ├── requirements.txt     
           ├── README.md                 # english version
           ├── README_vn.md              # vietnamese version
