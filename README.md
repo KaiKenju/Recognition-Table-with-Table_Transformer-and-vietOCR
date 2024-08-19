@@ -42,15 +42,16 @@ python run.py
 ## 📝 Result
 <!-- Dòng đầu tiên với 3 ảnh -->
 <p align="center">
-  <img src="images/bang2demo.png" width="200" />
-  <img src="files/detect_table.png" width="200" />
-  <img src="files/table_cropped.png" width="200" />
+  <img src="images/bang2demo.png" width="250" />
+  <img src="files/detect_table.png" width="250" />
+  <img src="files/table_cropped.png" width="250" />
 </p>
 
 <!-- Dòng thứ hai với 2 ảnh -->
 <p align="center">
-  <img src="files/detect_cells.png" width="200" />
-  <img src="files/detect_cell_row.png" width="200" />
+  <img src="files/detect_cells.png" width="250" />
+  <img src="files/detect_cell_row.png" width="250" />
+  <img src="files/recognize_cell.png" width="250" />
 </p>
 
 
