@@ -41,34 +41,35 @@ python run.py
 
 ## 📝 Result
 <p align="center">
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="images/bang2demo.png" width="250" />
-    <figcaption>Title for Image 1</figcaption>
+    <figcaption style="text-align:center">Title for Image 1</figcaption>
   </figure>
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="files/detect_table.png" width="250" />
-    <figcaption>Title for Image 2</figcaption>
+    <figcaption style="text-align:center">Title for Image 2</figcaption>
   </figure>
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="files/table_cropped.png" width="250" />
-    <figcaption>Title for Image 3</figcaption>
+    <figcaption style="text-align:center">Title for Image 3</figcaption>
   </figure>
 </p>
 
 <p align="center">
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="files/detect_cells.png" width="250" />
-    <figcaption>Title for Image 4</figcaption>
+    <figcaption style="text-align:center">Title for Image 4</figcaption>
   </figure>
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="files/detect_cell_row.png" width="250" />
-    <figcaption>Title for Image 5</figcaption>
+    <figcaption style="text-align:center">Title for Image 5</figcaption>
   </figure>
-  <figure style="display:inline-block">
+  <figure style="display:inline-block; margin:10px">
     <img src="files/recognize_cell.png" width="250" />
-    <figcaption>Title for Image 6</figcaption>
+    <figcaption style="text-align:center">Title for Image 6</figcaption>
   </figure>
 </p>
+
 
 
 
