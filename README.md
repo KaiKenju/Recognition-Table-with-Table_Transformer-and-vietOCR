@@ -40,35 +40,30 @@ python run.py
 ```
 
 ## 📝 Result
-<p align="center" style="display: flex; justify-content: center;">
-  <figure style="margin: 10px; text-align: center;">
-    <img src="images/bang2demo.png" width="250" />
-    <figcaption>Title for Image 1</figcaption>
-  </figure>
-  <figure style="margin: 10px; text-align: center;">
-    <img src="files/detect_table.png" width="250" />
-    <figcaption>Title for Image 2</figcaption>
-  </figure>
-  <figure style="margin: 10px; text-align: center;">
-    <img src="files/table_cropped.png" width="250" />
-    <figcaption>Title for Image 3</figcaption>
-  </figure>
+
+<p align="center">
+  <img src="images/bang2demo.png" alt="Image 1" width="200"/>
+  <img src="files/detect_table.png" alt="Image 2" width="200"/>
+  <img src="files/table_cropped.png" alt="Image 3" width="200"/>
+</p>
+<p align="center">
+  <strong>Title 1</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Title 2</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Title 3</strong>
 </p>
 
-<p align="center" style="display: flex; justify-content: center;">
-  <figure style="margin: 10px; text-align: center;">
-    <img src="files/detect_cells.png" width="250" />
-    <figcaption>Title for Image 4</figcaption>
-  </figure>
-  <figure style="margin: 10px; text-align: center;">
-    <img src="files/detect_cell_row.png" width="250" />
-    <figcaption>Title for Image 5</figcaption>
-  </figure>
-  <figure style="margin: 10px; text-align: center;">
-    <img src="files/recognize_cell.png" width="250" />
-    <figcaption>Title for Image 6</figcaption>
-  </figure>
+<p align="center">
+  <img src="files/detect_cells.png" alt="Image 4" width="200"/>
+  <img src="files/detect_cell_row.png" alt="Image 5" width="200"/>
+  <img src="files/recognize_cell.png" alt="Image 6" width="200"/>
 </p>
+<p align="center">
+  <strong>Title 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Title 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Title 6</strong>
+</p>
+
+
 
 
 
