@@ -218,8 +218,8 @@ def apply_ocr(cell_coordinates, cropped_table, predictor):
             cell_image = cropped_table.crop(cell["cell"])
             cell_image = np.array(cell_image)
             cell_image_pil = Image.fromarray(cell_image)
-            plt.imshow(cell_image_pil)
-            plt.show()
+            # plt.imshow(cell_image_pil)  # turn on to more understand
+            # plt.show()
             result = predictor.predict(cell_image_pil)
             print(" ", result)
             
@@ -263,3 +263,39 @@ def plot_results(cells,structure_model,cropped_table, class_to_visualize):
             
     plt.axis('off')
     plt.show()
+import pandas as pd
+from openpyxl import load_workbook
+
+def save_ocr_results_to_excel(data, output_path='output/output_vietocr.xlsx'):
+    """
+    Lưu kết quả OCR thành file Excel và điều chỉnh độ rộng cột tự động.
+
+    Parameters:
+    - data: Dữ liệu kết quả OCR dưới dạng dictionary.
+    - output_path: Đường dẫn lưu file Excel.
+    """
+    # Tạo DataFrame từ dữ liệu OCR
+    df = pd.DataFrame.from_dict(data, orient='index')
+    
+    # Lưu DataFrame thành file Excel
+    df.to_excel(output_path, index=False)
+    
+    # Mở lại file Excel vừa tạo để điều chỉnh độ rộng cột
+    workbook = load_workbook(output_path)
+    worksheet = workbook.active
+    
+    # Tự động điều chỉnh độ rộng các cột
+    for column in worksheet.columns:
+        max_length = 0
+        column = list(column)
+        for cell in column:
+            try:
+                max_length = max(max_length, len(str(cell.value)))
+            except:
+                pass
+        adjusted_width = max_length + 2
+        worksheet.column_dimensions[column[0].column_letter].width = adjusted_width
+    
+    # Lưu lại file Excel sau khi điều chỉnh độ rộng cột
+    workbook.save(output_path)
+

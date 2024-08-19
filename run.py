@@ -8,7 +8,7 @@ from pre_processing import (
     MaxResize, outputs_to_objects, visualize_detected_tables,
     objects_to_crops, apply_ocr, get_cell_coordinates_by_row,
     plot_results, TableTransformerForObjectDetection, AutoModelForObjectDetection,
-    Predictor, Cfg, fig2img
+    Predictor, Cfg, fig2img, save_ocr_results_to_excel
 )
 
 
@@ -111,19 +111,5 @@ data = apply_ocr(cell_coordinates, cropped_table, predictor)
 for row, row_data in data.items():
     print(row_data)
 
-# Lưu kết quả OCR thành file Excel
-df = pd.DataFrame.from_dict(data, orient='index')
-df.to_excel('output/output_vietocr.xlsx', index=False)
-workbook = load_workbook('output/output_vietocr.xlsx')
-worksheet = workbook.active
-for column in worksheet.columns:
-    max_length = 0
-    column = list(column)
-    for cell in column:
-        try:
-            max_length = max(max_length, len(str(cell.value)))
-        except:
-            pass
-    adjusted_width = max_length + 2
-    worksheet.column_dimensions[column[0].column_letter].width = adjusted_width
-workbook.save('output/output_vietocr.xlsx')
+save_ocr_results_to_excel(data)
+
