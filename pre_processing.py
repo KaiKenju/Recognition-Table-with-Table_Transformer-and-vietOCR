@@ -57,12 +57,14 @@ def outputs_to_objects(outputs, img_size, id2label):
     pred_scores = list(m.values.detach().cpu().numpy())[0]
     pred_bboxes = outputs['pred_boxes'].detach().cpu()[0]
     pred_bboxes = [elem.tolist() for elem in rescale_bboxes(pred_bboxes, img_size)]
+    
     objects = []
     for label, score, bbox in zip(pred_labels, pred_scores, pred_bboxes):
         class_label = id2label[int(label)]
         if not class_label == 'no object':
             objects.append({'label': class_label, 'score': float(score),
                             'bbox': [float(elem) for elem in bbox]})
+            
     return objects
 
 # Hàm chuyển đổi một hình ảnh Matplotlib thành hình ảnh PIL
@@ -76,6 +78,7 @@ def fig2img(fig):
 
 # Hàm hiển thị các bảng đã được phát hiện
 def visualize_detected_tables(img, det_tables, out_path=None):
+    
     plt.imshow(img, interpolation="lanczos")
     fig = plt.gcf()
     fig.set_size_inches(20, 20)
@@ -99,6 +102,7 @@ def visualize_detected_tables(img, det_tables, out_path=None):
             hatch='//////'
         else:
             continue
+        
         rect = patches.Rectangle(bbox[:2], bbox[2]-bbox[0], bbox[3]-bbox[1], linewidth=linewidth,
                                     edgecolor='none',facecolor=facecolor, alpha=0.1)
         ax.add_patch(rect)
@@ -108,8 +112,10 @@ def visualize_detected_tables(img, det_tables, out_path=None):
         rect = patches.Rectangle(bbox[:2], bbox[2]-bbox[0], bbox[3]-bbox[1], linewidth=0,
                                     edgecolor=edgecolor,facecolor='none',linestyle='-', hatch=hatch, alpha=0.2)
         ax.add_patch(rect)
+        
     plt.xticks([], [])
     plt.yticks([], [])
+    
     legend_elements = [Patch(facecolor=(1, 0, 0.45), edgecolor=(1, 0, 0.45),
                                 label='Table', hatch='//////', alpha=0.3),
                         Patch(facecolor=(0.95, 0.6, 0.1), edgecolor=(0.95, 0.6, 0.1),
@@ -126,6 +132,7 @@ def visualize_detected_tables(img, det_tables, out_path=None):
 def objects_to_crops(img, tokens, objects, class_thresholds, padding=10):
     table_crops = []
     img_w, img_h = img.size
+    
     for obj in objects:
         if obj['score'] < class_thresholds[obj['label']]:
             continue
@@ -155,9 +162,11 @@ def objects_to_crops(img, tokens, objects, class_thresholds, padding=10):
                         cropped_img.size[0]-bbox[1]-1,
                         bbox[2]]
                 token['bbox'] = bbox
+                
         cropped_table['image'] = cropped_img
         cropped_table['tokens'] = table_tokens
         table_crops.append(cropped_table)
+        
     return table_crops
 
 # Hàm lấy tọa độ các ô dựa vào hàng
@@ -166,10 +175,25 @@ def get_cell_coordinates_by_row(table_data):
     columns = [entry for entry in table_data if entry['label'] == 'table column']
     rows.sort(key=lambda x: x['bbox'][1])
     columns.sort(key=lambda x: x['bbox'][0])
-    def find_cell_coordinates(row, column):
-        cell_bbox = [column['bbox'][0], row['bbox'][1], column['bbox'][2], row['bbox'][3]]
+    
+    def find_cell_coordinates(row, column,padding=4):
+        ##cell_bbox = [column['bbox'][0], row['bbox'][1], column['bbox'][2], row['bbox'][3]]
+        
+        x1, y1 = column['bbox'][0], row['bbox'][1]
+        x2, y2 = column['bbox'][2], row['bbox'][3]
+
+        # Áp dụng padding
+        x1 -= padding
+        y1 -= padding
+        
+        x2 += 2
+        y2 += padding
+        
+        cell_bbox = [x1, y1, x2, y2]
         return cell_bbox
+    
     cell_coordinates = []
+    
     for row in rows:
         row_cells = []
         for column in columns:
@@ -178,46 +202,64 @@ def get_cell_coordinates_by_row(table_data):
         row_cells.sort(key=lambda x: x['column'][0])
         cell_coordinates.append({'row': row['bbox'], 'cells': row_cells, 'cell_count': len(row_cells)})
     cell_coordinates.sort(key=lambda x: x['row'][1])
+    
     return cell_coordinates
 
 # Hàm áp dụng OCR cho các ô
 def apply_ocr(cell_coordinates, cropped_table, predictor):
     data = dict()
     max_num_columns = 0
+    
     for idx, row in enumerate(tqdm(cell_coordinates)):
         row_text = []
         for cell in row["cells"]:
+        
+            #Crop cell from image
             cell_image = cropped_table.crop(cell["cell"])
             cell_image = np.array(cell_image)
             cell_image_pil = Image.fromarray(cell_image)
+            plt.imshow(cell_image_pil)
+            plt.show()
             result = predictor.predict(cell_image_pil)
+            print(" ", result)
+            
+    
             if result:
                 text = "".join(result)
+                #print(text)
                 row_text.append(text)
+                
+                
         if len(row_text) > max_num_columns:
             max_num_columns = len(row_text)
+            
         data[idx] = row_text
+        
     for row, row_data in data.copy().items():
         if len(row_data) != max_num_columns:
             row_data = row_data + ["" for _ in range(max_num_columns - len(row_data))]
         data[row] = row_data
+        
     return data
 
 # Hàm hiển thị các hàng trong bảng
 def plot_results(cells,structure_model,cropped_table, class_to_visualize):
     if class_to_visualize not in structure_model.config.id2label.values():
         raise ValueError("Class should be one of the available classes")
+    
     plt.figure(figsize=(8,4))
     plt.imshow(cropped_table)
     ax = plt.gca()
+    
     for cell in cells:
         score = cell["score"]
         bbox = cell["bbox"]
         label = cell["label"]
         if label == class_to_visualize:
             xmin, ymin, xmax, ymax = tuple(bbox)
-            ax.add_patch(plt.Rectangle((xmin, ymin), xmax - xmin, ymax - ymin, fill=False, color="red", linewidth=3))
+            ax.add_patch(plt.Rectangle((xmin, ymin), xmax - xmin, ymax - ymin, fill=False, color="red", linewidth=2))
             text = f'{cell["label"]}: {score:0.2f}'
-            ax.text(xmin, ymin, text, fontsize=15, bbox=dict(facecolor='yellow', alpha=0.5))
+            ax.text(xmin, ymin, text, fontsize=12, bbox=dict(facecolor='yellow', alpha=0.5)) #alpha độ trong suốt
+            
     plt.axis('off')
     plt.show()

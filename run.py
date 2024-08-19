@@ -18,13 +18,13 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 
 # Xử lý ảnh đầu vào
-file_path = 'images/Bang1demo.png'
+file_path = 'images/bang2demo.png'
 image = Image.open(file_path).convert("RGB")
 width, height = image.size
 resized_image = image.resize((int(0.6 * width), int(0.6 * height)))
-resized_image.save('Bang1demo_resized.png')
+#resized_image.save('Bang1demo_resized.png')
 
-# Áp dụng các bước tiền xử lý cho ảnh
+# Tiền xử lý ảnh
 detection_transform = transforms.Compose([
     MaxResize(800),
     transforms.ToTensor(),
@@ -60,7 +60,7 @@ cropped_table = tables_crops[0]['image'].convert("RGB")
 plt.imshow(cropped_table)
 plt.axis('off')
 plt.show()
-cropped_table.save("table_cropped.png")
+cropped_table.save("./files/table_cropped.png")
 
 # Tải mô hình nhận diện cấu trúc bảng
 structure_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-structure-recognition-v1.1-all")
@@ -94,9 +94,13 @@ plt.show()
 # Hiển thị các hàng trong bảng
 plot_results(cells, structure_model,cropped_table,class_to_visualize="table row" )
 
-# Cấu hình vietOCR
-cfg = Cfg.load_config_from_name('vgg_transformer')
-cfg['weights'] = 'https://vocr.vn/data/vietocr/vgg_transformer.pth'
+# Load inference model
+# cfg = Cfg.load_config_from_name('vgg_transformer')
+# cfg['weights'] = 'https://vocr.vn/data/vietocr/vgg_transformer.pth'
+
+# Load local model
+cfg = Cfg.load_config_from_file('./config/config_after_trainer.yml')
+cfg['weights'] = './weight/transformerocr.pth'
 cfg['cnn']['pretrained'] = False
 cfg['device'] = 'cpu'
 predictor = Predictor(cfg)
