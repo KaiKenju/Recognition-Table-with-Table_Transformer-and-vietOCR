@@ -21,6 +21,9 @@ conda create -n <env_name> python=3.8
 conda activate <env_name> 
 cd Vietnamese_OCR_documents
 ```
+- Download pre-train weight
+download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link)
+ 
 - Run the commands:
 ```[bash]
 pip install -r requirements.txt
