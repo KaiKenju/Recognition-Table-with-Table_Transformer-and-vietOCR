@@ -8,7 +8,7 @@ This repository is used to detect and recognize tables using Table Transformer a
 - Clone  this project:
 
 ```[bash]
-git clone https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR?tab=readme-ov-file
+git clone https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR.git
 ```
 
 - Initial enviromment with Miniconda:
@@ -83,9 +83,34 @@ Recognition-Table-with-Table_Transformer-and-vietOCR/
           ├── README_vn.md              # vietnamese version
 ```
 ## 🚀 Overview
+The project mainly contains three models
 
-## 🚀 Detection: Table Transformer
+- Table detection-Table Transformer(microsoft/table-transformer-detection)
+- Table Structure Recognition-(microsoft/table-structure-recognition-v1.1-all) 
+- Single line text recognition-vietOCR
+
+The table recognition flow chart is as follows
+<img src="files\overview_table.jpg" alt="Image 1" width="80%"/>
+
+## ⚠️ Pay-Attention
+
+- ✅ This model is optimized for tables with single line text.
+- ⚠️ Performance can be significantly reduced for tables containing multiple lines of text in a cell.
+- 🚫 Merge cells not supported
+- ⚠️ Multi-line text in a cell can cause errors when extracting data from a table.
+- ✅ Use this model with a simple table, each cell containing one line of text.
+- ✅ Only supports Vietnamese and English
+
+## 📚 References
+
+- https://github.com/PaddlePaddle/PaddleOCR/blob/main/ppstructure/table/README.md
+- https://github.com/microsoft/table-transformer
+- https://viblo.asia/p/deep-learning-table-recognition-simple-is-better-than-complex-bai-toan-tai-cau-truc-du-lieu-bang-bieu-voi-deep-learning-Qbq5QBYLKD8
+- https://github.com/pbcquoc/vietocr
 
 
-## ⚡ Recognition: VietOCR
+
+
+
+
 

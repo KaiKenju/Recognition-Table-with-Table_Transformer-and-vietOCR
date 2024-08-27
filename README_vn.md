@@ -3,12 +3,12 @@
 # Recognition-Table-with-Table_Transformer-and-vietOCR
 Repo này được phát triển và sử dụng để phát hiện và nhận dạng các bảng bằng Table Transformer và vietOCR. Đây là một mô-đun được phát triển từ [Vietnamese_OCR_documents](https://github.com/KaiKenju/Vietnamese_OCR_documents) repository của tôi.
 
-## 🛠️ Setup
+## 🛠️ Cài đặt
 
 - Clone  project:
 
 ```[bash]
-git clone https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR?tab=readme-ov-file
+git clone https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR.git
 ```
 
 - Khởi tạo môi trường với Miniconda:
@@ -20,7 +20,7 @@ conda create -n <env_name> python=3.8
 ```[bash]
 conda activate <env_name> 
 ```
-- Download pre-train weight
+- Tải pre-train weight
 download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link)
  
 - Run the commands:
@@ -28,7 +28,7 @@ download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigf
 pip install -r requirements.txt
 ```
 
-## ▶️ Run
+## ▶️ Khởi chạy
 * 🔥 Nếu bạn muốn hiểu cách mà mô hình hoạt động, từng bước thì chạy:
 ```[bash]
 python run.py
@@ -65,7 +65,7 @@ python main.py
 
 
 
-## 🚀 Structure Project
+## 🚀 Cấu trúc Project
 ```[bash]
 Recognition-Table-with-Table_Transformer-and-vietOCR/
           ├── config/                   # cấu hình và tùy chọn cho hệ thống OCR
@@ -82,10 +82,29 @@ Recognition-Table-with-Table_Transformer-and-vietOCR/
           ├── README.md                 # bản tiếng anh
           ├── README_vn.md              # bản tiếng việt
 ```
-## 🚀 Overview
+## 🚀 Tổng Quan
+Dự án này chủ yếu chứa ba mô hình
 
-## 🚀 Detection: Table Transformer
+- Table detection-Table Transformer(microsoft/table-transformer-detection)
+- Table Structure Recognition-(microsoft/table-structure-recognition-v1.1-all) 
+- Single line text recognition-vietOCR
 
+Biểu đồ luồng nhận dạng bảng như sau
+<img src="files\overview_table.jpg" alt="Image 1" width="80%"/>
 
-## ⚡ Recognition: VietOCR
+## ⚠️ Chú ý
+
+- ✅ Mô hình này được tối ưu hóa cho các bảng có văn bản một dòng.
+- ⚠️ Hiệu suất có thể giảm đáng kể đối với các bảng chứa nhiều dòng văn bản trong một ô.
+- 🚫 Không hỗ trợ hợp nhất các ô
+- ⚠️ Văn bản nhiều dòng trong một ô có thể gây ra lỗi khi trích xuất dữ liệu từ một bảng.
+- ✅ Sử dụng mô hình này với một bảng đơn giản, mỗi ô chứa một dòng văn bản.
+- ✅ Chỉ hỗ trợ tiếng Việt và tiếng Anh
+
+## 📚 Tài liệu tham khảo
+
+- https://github.com/PaddlePaddle/PaddleOCR/blob/main/ppstructure/table/README.md
+- https://github.com/microsoft/table-transformer
+- https://viblo.asia/p/deep-learning-table-recognition-simple-is-better-than-complex-bai-toan-tai-cau-truc-du-lieu-bang-bieu-voi-deep-learning-Qbq5QBYLKD8
+- https://github.com/pbcquoc/vietocr
 
