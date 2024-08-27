@@ -103,6 +103,12 @@ The table recognition flow chart is as follows
 - ⚠️ Multi-line text in a cell can cause errors when extracting data from a table.
 - ✅ Use this model with a simple table, each cell containing one line of text.
 - ✅ Only supports Vietnamese and English
+- 
+# 🗃️ Dataset
+## PubTables-1M (TATR)
+[PubTables-1M](https://arxiv.org/pdf/2110.00061) is a large and detailed dataset designed for training and evaluating models on table detection, table structure recognition, and functional analysis tasks.
+## Custome-Vietnamese (vietOCR)
+[VietOCR](https://github.com/pbcquoc/vietocr) is a dataset used to train Vietnamese OCR models, including various annotated texts for line-by-line text recognition and extraction.
 
 ## 📚 References
 

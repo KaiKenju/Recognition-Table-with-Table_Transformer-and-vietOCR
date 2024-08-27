@@ -102,7 +102,11 @@ Biểu đồ luồng nhận dạng bảng như sau
 - ⚠️ Văn bản nhiều dòng trong một ô có thể gây ra lỗi khi trích xuất dữ liệu từ một bảng.
 - ✅ Sử dụng mô hình này với một bảng đơn giản, mỗi ô chứa một dòng văn bản.
 - ✅ Chỉ hỗ trợ tiếng Việt và tiếng Anh
-
+# 🗃️ Dataset
+## PubTables-1M (TATR)
+[PubTables-1M](https://arxiv.org/pdf/2110.00061) là một tập dữ liệu lớn và chi tiết được thiết kế để đào tạo và đánh giá các mô hình về phát hiện bảng, nhận dạng cấu trúc bảng và các tác vụ phân tích chức năng.
+## Custome-Vietnamese (vietOCR)
+[VietOCR](https://github.com/pbcquoc/vietocr) là một tập dữ liệu được sử dụng để đào tạo các mô hình OCR của Việt Nam, bao gồm nhiều văn bản có chú thích khác nhau để nhận dạng và trích xuất văn bản theo từng dòng.
 ## 📚 Tài liệu tham khảo
 
 - https://github.com/PaddlePaddle/PaddleOCR/blob/main/ppstructure/table/README.md
