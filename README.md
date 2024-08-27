@@ -21,7 +21,10 @@ conda create -n <env_name> python=3.8
 conda activate <env_name> 
 ```
 - Download pre-train weight
-download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link)
+download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link) and following step:
+```[bash]
+Download weight file and put it following path: weight/transformerocr.pth
+```
  
 - Run the commands:
 ```[bash]
