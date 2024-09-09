@@ -18,7 +18,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 
 # Xử lý ảnh đầu vào
-file_path = 'images/bang2demo.png'
+file_path = 'images/Bang1demo.png'
 image = Image.open(file_path).convert("RGB")
 width, height = image.size
 resized_image = image.resize((int(0.6 * width), int(0.6 * height)))
@@ -81,6 +81,9 @@ with torch.no_grad():
 structure_id2label = structure_model.config.id2label
 structure_id2label[len(structure_id2label)] = "no object"
 cells = outputs_to_objects(outputs, cropped_table.size, structure_id2label)
+print("Cấu trúc của một ô:")
+print(cells[0])  # In ra cấu trúc của ô đầu tiên
+#canonicalization
 
 # Hiển thị các ô được nhận diện trong bảng
 cropped_table_visualized = cropped_table.copy()
@@ -91,9 +94,8 @@ plt.imshow(cropped_table_visualized)
 plt.axis('off')
 plt.show()
 
-# Hiển thị các hàng trong bảng
 plot_results(cells, structure_model,cropped_table,class_to_visualize="table row" )
-
+plot_results(cells, structure_model,cropped_table,class_to_visualize="table column" )
 # Load inference model
 # cfg = Cfg.load_config_from_name('vgg_transformer')
 # cfg['weights'] = 'https://vocr.vn/data/vietocr/vgg_transformer.pth'

@@ -183,11 +183,11 @@ def get_cell_coordinates_by_row(table_data):
         x2, y2 = column['bbox'][2], row['bbox'][3]
 
         # Áp dụng padding
-        x1 -= padding
+        x1 -= padding -2 
         y1 -= padding
         
         x2 += 2
-        y2 += padding
+        y2 += padding + 2
         
         cell_bbox = [x1, y1, x2, y2]
         return cell_bbox
@@ -218,13 +218,13 @@ def apply_ocr(cell_coordinates, cropped_table, predictor):
             cell_image = cropped_table.crop(cell["cell"])
             cell_image = np.array(cell_image)
             cell_image_pil = Image.fromarray(cell_image)
-            # plt.imshow(cell_image_pil)  # turn on to more understand
-            # plt.show()
+            plt.imshow(cell_image_pil)  # turn on to more understand
+            plt.show()
             result = predictor.predict(cell_image_pil)
             print(" ", result)
             
     
-            if result:
+            if len(result) > 0: #if result:
                 text = "".join(result)
                 #print(text)
                 row_text.append(text)
