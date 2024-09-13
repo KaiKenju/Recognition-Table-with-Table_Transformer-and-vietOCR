@@ -1,7 +1,42 @@
+<div align="center">
 
-🌎 [English] | Vietnamese(README.md)
-# Recognition-Table-with-Table_Transformer-and-vietOCR
-Repo này được phát triển và sử dụng để phát hiện và nhận dạng các bảng bằng Table Transformer và vietOCR. Đây là một mô-đun được phát triển từ [Vietnamese_OCR_documents](https://github.com/KaiKenju/Vietnamese_OCR_documents) repository của tôi.
+<img alt="table_ocr_logo" src="assets/logo_ocr.png" width=120 height=120>
+<h1>TableOCR</h1>
+
+[English](README.md) / Vietnamese
+
+<img src="assets/bg_image.png" width=700>
+
+</div>
+
+## Recognition-Table-with-Table_Transformer-and-vietOCR
+- Sự kết hợp giữa Table Transformer và vietOCR cung cấp một giải pháp mạnh mẽ để nhận dạng và trích xuất thông tin từ các bảng trong tài liệu tiếng Việt. 
+- Table Transformer đảm nhiệm việc nhận dạng cấu trúc bảng, trong khi vietOCR đảm bảo nhận dạng ký tự quang học chính xác, giúp tái tạo dữ liệu từ các tài liệu dạng bảng hiệu quả và chính xác hơn.
+
+<br>
+
+> **Related Projects**：
+>
+> - [Vietnamese_OCR_documents](https://github.com/KaiKenju/Vietnamese_OCR_documents): is used to convert text from images or scanned documents into digital format, allowing automatic processing and analysis of text data. This technology is very useful in extracting information from Vietnamese documents, making information searching and management easier and more efficient.
+
+<br>
+<br>
+
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+  - [🛠️ Cài đặt](#️-cài-đặt)
+  - [▶️ Khởi chạy](#️-khởi-chạy)
+  - [📝 Kết quả](#-kết-quả)
+  - [🚀 Cấu trúc Project](#-cấu-trúc-project)
+  - [🚀 Tổng Quan](#-tổng-quan)
+  - [⚠️ Chú ý](#️-chú-ý)
+- [🗃️ Dataset](#️-dataset)
+  - [PubTables-1M (TATR)](#pubtables-1m-tatr)
+  - [Custome-Vietnamese (vietOCR)](#custome-vietnamese-vietocr)
+  - [📚 Tài liệu tham khảo](#-tài-liệu-tham-khảo)
+- [📧 Contact Us](#-contact-us)
+- [Contributors](#contributors)
+
 
 ## 🛠️ Cài đặt
 
@@ -20,10 +55,9 @@ conda create -n <env_name> python=3.8
 ```[bash]
 conda activate <env_name> 
 ```
-- Tải pre-train weight
-download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link) và
+- Tải pre-train weight: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link) và
 ```[bash]
-Tải weight file và đặt theo đường dẫn: weight/transformerocr.pth
+đặt theo đường dẫn: weight/transformerocr.pth
 ```
 - Run the commands:
 ```[bash]
@@ -114,3 +148,18 @@ Biểu đồ luồng nhận dạng bảng như sau
 - https://viblo.asia/p/deep-learning-table-recognition-simple-is-better-than-complex-bai-toan-tai-cau-truc-du-lieu-bang-bieu-voi-deep-learning-Qbq5QBYLKD8
 - https://github.com/pbcquoc/vietocr
 
+<br>
+
+# 📧 Contact Us
+
+Nếu bạn có thắc mắc hãy liên hệ email hiepdv.tb288@gmail.com
+
+<br>
+
+# Contributors
+
+<a href="https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR/graphs/contributors">
+ <img src="assets/avt-removebg-preview.png" width="100" />
+</a>
+
+[Kai-Kenju](https://github.com/KaiKenju)

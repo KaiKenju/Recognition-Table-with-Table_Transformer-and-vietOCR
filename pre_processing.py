@@ -218,8 +218,8 @@ def apply_ocr(cell_coordinates, cropped_table, predictor):
             cell_image = cropped_table.crop(cell["cell"])
             cell_image = np.array(cell_image)
             cell_image_pil = Image.fromarray(cell_image)
-            plt.imshow(cell_image_pil)  # turn on to more understand
-            plt.show()
+            # plt.imshow(cell_image_pil)  # turn on to more understand
+            # plt.show()
             result = predictor.predict(cell_image_pil)
             print(" ", result)
             

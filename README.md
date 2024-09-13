@@ -1,7 +1,41 @@
+<div align="center">
 
-🌎 English | [Vietnamese](README_vn.md)
-# Recognition-Table-with-Table_Transformer-and-vietOCR
-This repository is used to detect and recognize tables using Table Transformer and vietOCR. It is a module developed from my [Vietnamese_OCR_documents](https://github.com/KaiKenju/Vietnamese_OCR_documents) repository
+<img alt="table_ocr_logo" src="assets/logo_ocr.png" width=120 height=120>
+<h1>TableOCR</h1>
+
+English / [Vietnamese](README_vn.md) / 
+
+<img src="assets/bg_image.png" width=700>
+
+</div>
+
+## Recognition-Table-with-Table_Transformer-and-vietOCR
+- The combination of Table Transformer and vietOCR provides a powerful solution for recognizing and extracting information from tables in Vietnamese documents. 
+- Table Transformer takes care of recognizing the table structure, while vietOCR ensures accurate optical character recognition, helping to reproduce data from tabular documents more efficiently and accurately.
+
+<br>
+
+> **Related Projects**：
+>
+> - [Vietnamese_OCR_documents](https://github.com/KaiKenju/Vietnamese_OCR_documents): is used to convert text from images or scanned documents into digital format, allowing automatic processing and analysis of text data. This technology is very useful in extracting information from Vietnamese documents, making information searching and management easier and more efficient.
+
+<br>
+<br>
+
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+  - [🛠️ Setup](#️-setup)
+  - [▶️ Run](#️-run)
+  - [📝 Result](#-result)
+  - [🚀 Structure Project](#-structure-project)
+  - [🚀 Overview](#-overview)
+  - [⚠️ Pay-Attention](#️-pay-attention)
+- [🗃️ Dataset](#️-dataset)
+  - [PubTables-1M (TATR)](#pubtables-1m-tatr)
+  - [Custome-Vietnamese (vietOCR)](#custome-vietnamese-vietocr)
+  - [📚 References](#-references)
+- [📧 Contact Us](#-contact-us)
+- [Contributors](#contributors)
 
 ## 🛠️ Setup
 
@@ -20,10 +54,10 @@ conda create -n <env_name> python=3.8
 ```[bash]
 conda activate <env_name> 
 ```
-- Download pre-train weight
-download from here: [transformerocr](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link) and following step:
+- Download pre-train weight: [transformerocr.pth](https://drive.google.com/file/d/1g3-Hi4oigfbrrNFZxQCh5qhEYjZU2_Ar/view?usp=drive_link) and following step:
+
 ```[bash]
-Download weight file and put it following path: weight/transformerocr.pth
+replace it following path: weight/transformerocr.pth
 ```
  
 - Run the commands:
@@ -117,7 +151,21 @@ The table recognition flow chart is as follows
 - https://viblo.asia/p/deep-learning-table-recognition-simple-is-better-than-complex-bai-toan-tai-cau-truc-du-lieu-bang-bieu-voi-deep-learning-Qbq5QBYLKD8
 - https://github.com/pbcquoc/vietocr
 
+<br>
 
+# 📧 Contact Us
+
+If you have any questions, please email hiepdv.tb288@gmail.com
+
+<br>
+
+# Contributors
+
+<a href="https://github.com/KaiKenju/Recognition-Table-with-Table_Transformer-and-vietOCR/graphs/contributors">
+ <img src="assets/avt-removebg-preview.png" width="100" />
+</a>
+
+[Kai-Kenju](https://github.com/KaiKenju)
 
 
 

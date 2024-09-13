@@ -12,19 +12,21 @@ from pre_processing import (
 )
 
 
-# Tải mô hình phát hiện bảng
+# Load inference model table detection
 model = AutoModelForObjectDetection.from_pretrained("microsoft/table-transformer-detection", revision="no_timm")
+
+# Load local model
+# model = AutoModelForObjectDetection.from_pretrained("./local_model/table-transformer-detection/")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 
-# Xử lý ảnh đầu vào
-file_path = 'images/Bang1demo.png'
+# image processing
+file_path = 'images/bang2demo.png'
 image = Image.open(file_path).convert("RGB")
 width, height = image.size
 resized_image = image.resize((int(0.6 * width), int(0.6 * height)))
-#resized_image.save('Bang1demo_resized.png')
+#resized_image.save("./files/table_cropped.png")
 
-# Tiền xử lý ảnh
 detection_transform = transforms.Compose([
     MaxResize(800),
     transforms.ToTensor(),
@@ -33,11 +35,11 @@ detection_transform = transforms.Compose([
 pixel_values = detection_transform(image).unsqueeze(0)
 pixel_values = pixel_values.to(device)
 
-# Dự đoán bounding box và nhãn cho các bảng trong ảnh
+# Predict bounding box and label for tables in image
 with torch.no_grad():
     outputs = model(pixel_values)
 
-# Hậu xử lý kết quả dự đoán
+# Post-processing: convert outputs to objects
 id2label = model.config.id2label
 id2label[len(model.config.id2label)] = "no object"
 objects = outputs_to_objects(outputs, image.size, id2label)
@@ -62,8 +64,9 @@ plt.axis('off')
 plt.show()
 cropped_table.save("./files/table_cropped.png")
 
-# Tải mô hình nhận diện cấu trúc bảng
+# Load inference model table structure recognition
 structure_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-structure-recognition-v1.1-all")
+# structure_model = TableTransformerForObjectDetection.from_pretrained("./local_model/table-structure-recognition-v1.1-all/")
 structure_model.to(device)
 
 # Áp dụng các bước tiền xử lý cho ảnh cắt được từ bảng
