@@ -3,7 +3,7 @@
 <img alt="table_ocr_logo" src="assets/logo_ocr.png" width=120 height=120>
 <h1>TableOCR</h1>
 
-English / [Vietnamese](README_vn.md) / 
+English / [Vietnamese](README_vn.md) 
 
 <img src="assets/bg_image.png" width=700>
 
